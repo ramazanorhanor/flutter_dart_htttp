@@ -17,7 +17,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     getCategoriesFromApi();
-   
+    super.initState();
   }
 
   @override
@@ -48,9 +48,9 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   void getCategoriesFromApi() {
-    CategoryApi.getCategories().then((value) {
+    CategoryApi.getCategories().then((response) {
       setState(() {
-        Iterable list = json.decode(value.body);
+        Iterable list = json.decode(response.body);
         this.categories =
             list.map((category) => Category.fromJson(category)).toList();
         getCategoryWidgets();
@@ -69,7 +69,6 @@ class _MainScreenState extends State<MainScreen> {
     return ElevatedButton(
       child: Text(
         category.categoryName!,
-      
       ),
       onPressed: () {},
     );

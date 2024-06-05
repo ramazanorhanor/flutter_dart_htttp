@@ -24,6 +24,11 @@ Resolving dependencies...
   flutter_lints 3.0.2 (4.0.0 available)
 + http 1.2.1
 + http_parser 4.0.2
+
+----------------yada  --------------
+
+flutter pub add http
+
 --------------------------------------------------------------------------------------------------
 
 
