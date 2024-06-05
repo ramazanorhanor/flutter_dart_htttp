@@ -25,3 +25,35 @@ Resolving dependencies...
 + http 1.2.1
 + http_parser 4.0.2
 --------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------
+https://github.com/ramazanorhanor/flutter_dart_htttp
+
+…or create a new repository on the command line
+echo "# flutter_dart_htttp" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/ramazanorhanor/flutter_dart_htttp.git
+git push -u origin main
+…or push an existing repository from the command line
+git remote add origin https://github.com/ramazanorhanor/flutter_dart_htttp.git
+git branch -M main
+git push -u origin main
+--------------------------------------------------------------------------------------------------

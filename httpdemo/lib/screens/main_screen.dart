@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:httpdemo/data/api/category_api.dart';
+import 'package:httpdemo/models/category.dart';
+import 'dart:convert';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -9,6 +11,15 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  List<Category> categories = List<Category>.empty();
+  List<Widget> categoryWidgets = List<Widget>.empty();
+
+  @override
+  void initState() {
+    getCategoriesFromApi();
+   
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,18 +38,40 @@ class _MainScreenState extends State<MainScreen> {
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
-                children: <Widget>[
-                  Text("Bal "),
-                  Text("Bal "),
-                  Text("Bal "),
-                  Text("Bal "),
-                  Text("Bal ")
-                ],
+                children: categoryWidgets,
               ),
             )
           ],
         ),
       ),
+    );
+  }
+
+  void getCategoriesFromApi() {
+    CategoryApi.getCategories().then((value) {
+      setState(() {
+        Iterable list = json.decode(value.body);
+        this.categories =
+            list.map((category) => Category.fromJson(category)).toList();
+        getCategoryWidgets();
+      });
+    });
+  }
+
+  List<Widget> getCategoryWidgets() {
+    for (int i = 0; i < categories.length; i++) {
+      categoryWidgets.add(getCategoryWidget(categories[i]));
+    }
+    return categoryWidgets;
+  }
+
+  Widget getCategoryWidget(Category category) {
+    return ElevatedButton(
+      child: Text(
+        category.categoryName!,
+      
+      ),
+      onPressed: () {},
     );
   }
 }
