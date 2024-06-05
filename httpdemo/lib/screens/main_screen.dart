@@ -51,8 +51,7 @@ class _MainScreenState extends State<MainScreen> {
     CategoryApi.getCategories().then((response) {
       setState(() {
         Iterable list = json.decode(response.body);
-        this.categories =
-            list.map((category) => Category.fromJson(category)).toList();
+        this.categories =list.map((category) => Category.fromJson(category)).toList();
         getCategoryWidgets();
       });
     });
@@ -69,7 +68,9 @@ class _MainScreenState extends State<MainScreen> {
     return ElevatedButton(
       child: Text(
         category.categoryName!,
-      ),
+        style: TextStyle(color: Colors.deepOrange),
+        
+      ),    
       onPressed: () {},
     );
   }
